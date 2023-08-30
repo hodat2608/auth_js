@@ -12,8 +12,9 @@ const initialState ={
     user: null,
 }
 
-export default function (state = initialState,action){
+export default function (state = initialState, action) {
     const {type, payload} = action;
+
     switch(type){ 
         case LOGIN_SUCCESS:
             localStorage.setItem('access',payload.access)

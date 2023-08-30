@@ -9,8 +9,9 @@ import Layout from './hocs/Layout';
 import Home from './containers/Home';
 import { Provider  } from 'react-redux';
 import store  from './store';
+import './App.css';
 const App = () => ( 
-    <Provider>
+    <Provider store={store}>
         <Router>
             <Layout />
                 <Routes> 

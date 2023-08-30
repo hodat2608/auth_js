@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux'
+import { login  } from '../actions/auth';
 
-const Login = () => {
+const Login = ({login}) => {
     const [formData, setFormData] = useState({
       email:'',
       password : '',
@@ -13,13 +14,14 @@ const Login = () => {
     const onChange = e => setFormData ({...formData,[e.target.name]: e.target.value});
 
     const onSubmit = e => {
-      e.PreventDefault();  
+      e.preventDefault();  
+      login(email,password);
     }
 
     return (
       <div className='container mt-5'> 
         <h1>Sign in</h1>
-        <p>Sign in in your account </p>
+        <p>Sign in into your account </p>
         <form onSubmit = {e => onSubmit(e)}>
           <div className='form-group'> 
             <input 
@@ -51,10 +53,10 @@ const Login = () => {
           Haven't account yet ? <Link to = '/Signup/'>Sign up</Link>
         </p>
         <p className='mt-3'>
-          Forgot password ? <Link to = '/reset-password/'>Sign up</Link>
+          Forgot password ? <Link to = '/reset-password/'>Forgot password ? </Link>
         </p>
       </div>
     )
 }
 
-export default connect(null,{}) (Login);
+export default connect(null,{login}) (Login);
