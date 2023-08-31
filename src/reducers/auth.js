@@ -3,26 +3,35 @@ import {
     LOGIN_FAIL,
     USER_LOADED_SUCCESS,
     USER_LOADED_FAIL,
+    AUTHENTICATED_SUCCESS,
+    AUTHENTICATED_FAIL,
+    LOGOUT,
 } from  '../actions/types'
 
-const initialState ={
-    access : localStorage.getItem('access'),
-    refresh : localStorage.getItem('refresh'),
+const initialState = {
+    access: localStorage.getItem('access'),
+    refresh: localStorage.getItem('refresh'),
     isAuthenticated: null,
-    user: null,
-}
+    user: null
+};
 
-export default function (state = initialState, action) {
-    const {type, payload} = action;
+export default function(state = initialState, action) {
+    const { type, payload } = action;
 
-    switch(type){ 
-        case LOGIN_SUCCESS:
-            localStorage.setItem('access',payload.access)
+    switch(type) {
+        case AUTHENTICATED_SUCCESS:
             return {
                 ...state,
-                isAuthenticated:true,
-                access : payload.access,
-                refresh : payload.refresh,
+                isAuthenticated: true
+            }
+        case LOGIN_SUCCESS:
+            localStorage.setItem('access', payload.access);
+            // localStorage.setItem('refresh', payload.refresh);
+            return {
+                ...state,
+                isAuthenticated: true,
+                access: payload.access,
+                refresh: payload.refresh
             }
         
         case USER_LOADED_SUCCESS:
@@ -31,12 +40,19 @@ export default function (state = initialState, action) {
                 user: payload
             }
 
+        case AUTHENTICATED_FAIL:
+        return {
+            ...state,
+            isAuthenticated: false
+        }
+
         case USER_LOADED_FAIL:
             return {
                 ...state,
                 user: null
             }
         case LOGIN_FAIL:
+        case LOGOUT:
             localStorage.removeItem('accesss');
             localStorage.removeItem('refresh');
             return {
@@ -49,8 +65,8 @@ export default function (state = initialState, action) {
 
         default:
             return state
-    }
+    };
 
-}
+};
 
     
