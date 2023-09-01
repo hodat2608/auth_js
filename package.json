@@ -20,7 +20,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "rmdir /s /q ..\\Management\\build && react-scripts build && xcopy /s /e /I build ..\\Management\\build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

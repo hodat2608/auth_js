@@ -8,6 +8,7 @@ import ResetPassword from './containers/ResetPassword';
 import Layout from './hocs/Layout';
 import Home from './containers/Home';
 import MainContent from './containers/mainContent';
+import Notificationresetpassword from './containers/Notification_resetpassword';
 import { Provider  } from 'react-redux';
 import store  from './store';
 import './App.css';
@@ -17,6 +18,7 @@ const App = () => (
             <Layout />
                 <Routes> 
                     <Route path='/' element={<Home/>} />
+                    <Route path='/notification/' element={<Notificationresetpassword/>} />
                     <Route path='/main/' element={<MainContent/>} />
                     <Route path='/login/' element={<Login/>} />
                     <Route path='/signup/' element={<Signup/>} />

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link, Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux'
 import { login  } from '../actions/auth';
 import {Navigate} from 'react-router-dom';
@@ -54,10 +54,10 @@ const Login = ({login,isAuthenticated}) => {
             <button className='btn btn-primary' type='submit'>Login</button>
           </form>
           <p className='mt-3'>
-            Haven't account yet ? <Link to = '/Signup/'>Sign up</Link>
+            Haven't account yet ? <Link to = '/signup/'>Sign up</Link>
           </p>
           <p className='mt-3'>
-            Forgot password ? <Link to = '/reset-password/'>Forgot password ? </Link>
+            Forgot your password ? <Link to = '/reset-password/'>Forgot password ? </Link>
           </p>
         </div>
     );
