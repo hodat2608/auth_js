@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux'
 import { login  } from '../actions/auth';
 import {Navigate} from 'react-router-dom';
+import axios from 'axios';
 
 const Login = ({login,isAuthenticated}) => {
     const [formData, setFormData] = useState({
@@ -17,6 +18,15 @@ const Login = ({login,isAuthenticated}) => {
     const onSubmit = e => {
       e.preventDefault();  
       login(email,password);
+    };
+
+    const continueWithGoogle = async () => {
+      try {
+          const res = await axios.get(`${process.env.REACT_APP_API_URL}/auth/o/google-oauth2/?redirect_uri=http://localhost:8000`)
+          window.location.replace(res.data.authorization_url);
+      } catch (err) {
+
+      }
     };
 
     if (isAuthenticated){
@@ -59,6 +69,9 @@ const Login = ({login,isAuthenticated}) => {
           <p className='mt-3'>
             Forgot your password ? <Link to = '/reset-password/'>Forgot password ? </Link>
           </p>
+          <button className='btn btn-danger mt-3' onClick={continueWithGoogle}>
+              Continue With Google
+          </button>
         </div>
     );
 };
