@@ -1,13 +1,12 @@
 
-.container {
-  max-width: 400px; 
+.containerdat {
+  max-width: 600px; 
   margin: 0 auto; 
   padding: 20px; 
   text-align: center; 
   background-color: #f7f7f7;
   border: 1px solid #ddd; 
   border-radius: 5px; 
-  margin-top: 5%;
 }
 h1 {
   font-size: 2rem;

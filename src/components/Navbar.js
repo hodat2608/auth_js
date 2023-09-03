@@ -3,7 +3,8 @@ import { Link, Navigate } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { logout } from '../actions/auth';
 
-const Navbar = ({ logout, isAuthenticated }) => {
+
+const Navbar = ({ logout, isAuthenticated,user }) => {
     const [redirect, setRedirect] = useState(false);
 
     const logout_user = () => {
@@ -26,7 +27,15 @@ const Navbar = ({ logout, isAuthenticated }) => {
         <li className='nav-item'>
             <a className='nav-link' href='#!' onClick={logout_user}>Logout</a>
         </li>
+        
     );
+
+    if(user){
+        console.log('name email :', user)
+    }else
+    {
+        console.log('null')
+    }
 
     return (
         <Fragment>
@@ -64,7 +73,8 @@ const Navbar = ({ logout, isAuthenticated }) => {
 };
 
 const mapStateToProps = state => ({
-    isAuthenticated: state.auth.isAuthenticated
+    isAuthenticated: state.auth.isAuthenticated,
+    user: state.auth.user
 });
 
 export default connect(mapStateToProps, { logout })(Navbar);
