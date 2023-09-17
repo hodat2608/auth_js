@@ -14,11 +14,14 @@ import Google from './containers/Google';
 import { Provider  } from 'react-redux';
 import store  from './store';
 import './App.css';
+import Note_title from './postview/note_title';
 const App = () => ( 
     <Provider store={store}>
+        <div className="container dark">
         <Router>
             <Layout />
                 <Routes> 
+                    <Route path='/notes/' element={<Note_title/>} />
                     <Route path='/' element={<Home/>} />
                     <Route path='/notification/' element={<Notificationresetpassword/>} />
                     <Route path='/main/' element={<MainContent/>} />
@@ -31,6 +34,7 @@ const App = () => (
                     <Route path='/password/reset/confirm/:uid/:token/' element={<ResetPasswordConfirm/>} />               
                 </Routes>   
         </Router>
+        </div>
     </Provider>
 )
 

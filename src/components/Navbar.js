@@ -45,6 +45,7 @@ const Navbar = ({ logout, isAuthenticated,user }) => {
                 integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" 
                 crossorigin="anonymous"
                 />
+            <div className='concac'>
             <nav className='navbar navbar-expand-lg navbar-light bg-light'>
                 <Link className='navbar-brand' to='/'>Auth System</Link>
                 <button 
@@ -68,6 +69,7 @@ const Navbar = ({ logout, isAuthenticated,user }) => {
                 </div>
             </nav>
             {redirect ? <Navigate to='/' /> : <Fragment></Fragment>}
+            </div>
         </Fragment>
     );
 };

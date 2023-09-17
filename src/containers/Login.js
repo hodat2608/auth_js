@@ -38,7 +38,8 @@ const Login = ({login,isAuthenticated}) => {
     };
 
     if (isAuthenticated){
-      return <Navigate to="/main/" />
+      // return <Navigate to="/main/" />
+      return <Navigate to="/notes/" />
     }
 
     return (
